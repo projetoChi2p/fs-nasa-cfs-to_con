@@ -36,7 +36,7 @@ set(APP_SRC_FILES
 
 # Create the app module
 add_cfe_app(to_con ${APP_SRC_FILES})
-#add_cfe_tables(to_con fsw/tables/to_con_sub.c)
+add_cfe_tables(to_con fsw/tables/to_con_sub.c)
 
 target_include_directories(to_con PUBLIC fsw/inc)
 

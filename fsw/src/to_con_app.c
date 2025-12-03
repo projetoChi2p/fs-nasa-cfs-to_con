@@ -136,7 +136,7 @@ CFE_Status_t TO_CON_init(void)
         return status;
     }
 
-    status = CFE_TBL_Load(TO_CON_Global.SubsTblHandle, CFE_TBL_SRC_FILE, "/cf/tocon.tbl");
+    status = CFE_TBL_Load(TO_CON_Global.SubsTblHandle, CFE_TBL_SRC_FILE, "/cf/to_con.tbl");
     if (status != CFE_SUCCESS)
     {
         CFE_EVS_SendEvent(TO_CON_TBL_ERR_EID, CFE_EVS_EventType_ERROR, "L%d TO Can't load table status %i", __LINE__,
