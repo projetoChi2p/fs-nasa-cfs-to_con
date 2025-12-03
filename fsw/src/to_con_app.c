@@ -38,8 +38,6 @@
 */
 TO_CON_GlobalData_t TO_CON_Global;
 
-extern TO_CON_Subs_t TO_CON_Subs;
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /*                                                                   */
 /* TO_CON_AppMain() -- Application entry point and main process loop */
@@ -138,9 +136,7 @@ CFE_Status_t TO_CON_init(void)
         return status;
     }
 
-    //status = CFE_TBL_Load(TO_CON_Global.SubsTblHandle, CFE_TBL_SRC_FILE, "/cf/to_con_sub.tbl");
-    status = CFE_TBL_Load(TO_CON_Global.SubsTblHandle, CFE_TBL_SRC_ADDRESS, &TO_CON_Subs);
-
+    status = CFE_TBL_Load(TO_CON_Global.SubsTblHandle, CFE_TBL_SRC_FILE, "/cf/tocon.tbl");
     if (status != CFE_SUCCESS)
     {
         CFE_EVS_SendEvent(TO_CON_TBL_ERR_EID, CFE_EVS_EventType_ERROR, "L%d TO Can't load table status %i", __LINE__,
