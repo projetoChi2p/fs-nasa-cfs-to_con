@@ -38,6 +38,10 @@
 */
 TO_CON_GlobalData_t TO_CON_Global;
 
+#ifdef TO_CON_APP_USE_STATIC_TABLE
+extern TO_CON_Subs_t TO_CON_Subs;
+#endif
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /*                                                                   */
 /* TO_CON_AppMain() -- Application entry point and main process loop */
@@ -135,8 +139,11 @@ CFE_Status_t TO_CON_init(void)
                           __LINE__, (int)status);
         return status;
     }
-
-    status = CFE_TBL_Load(TO_CON_Global.SubsTblHandle, CFE_TBL_SRC_FILE, "/cf/to_con.tbl");
+    #ifdef TO_CON_APP_USE_STATIC_TABLE
+        status = CFE_TBL_Load(TO_CON_Global.SubsTblHandle, CFE_TBL_SRC_ADDRESS, &TO_CON_Subs);
+    #else
+        status = CFE_TBL_Load(TO_CON_Global.SubsTblHandle, CFE_TBL_SRC_FILE, "/cf/to_con.tbl");
+    #endif
     if (status != CFE_SUCCESS)
     {
         CFE_EVS_SendEvent(TO_CON_TBL_ERR_EID, CFE_EVS_EventType_ERROR, "L%d TO Can't load table status %i", __LINE__,

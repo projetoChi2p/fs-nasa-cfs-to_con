@@ -25,7 +25,6 @@ foreach(EXT_APP mxm_app huff_app ci_lab sample_app hs fm ds sc lc)
 endforeach()
 
 
-
 set(APP_SRC_FILES
     fsw/src/to_con_app.c
     fsw/src/to_con_cmds.c
@@ -36,8 +35,13 @@ set(APP_SRC_FILES
 
 # Create the app module
 add_cfe_app(to_con ${APP_SRC_FILES})
-add_cfe_tables(to_con fsw/tables/to_con_sub.c)
 
-target_include_directories(to_con PUBLIC fsw/inc)
+if(TO_CON_APP_USE_STATIC_TABLE)
+  add_definitions(-DTO_CON_APP_USE_STATIC_TABLE=1)
+else()
+  add_cfe_tables(to_con fsw/tables/to_con_sub.c)
+endif()
 
 target_link_libraries(to_con tbl)
+
+target_include_directories(to_con PUBLIC fsw/inc)
