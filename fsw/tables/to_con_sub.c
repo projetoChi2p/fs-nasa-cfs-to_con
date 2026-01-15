@@ -118,5 +118,5 @@ TO_CON_Subs_t TO_CON_Subs = {.Subs = {/* CFS App Subscriptions */
                                       {CFE_SB_MSGID_RESERVED, {0, 0}, 0}}};
 
 #ifndef TO_CON_APP_USE_STATIC_TABLE
-CFE_TBL_FILEDEF(TO_CON_Subs, TO_CON_APP.TO_CON_Subs, TO Con Sub Tbl, to_con_sub.tbl)
+CFE_TBL_FILEDEF(TO_CON_Subs, TO_CON_APP.TO_CON_Subs, TO Con Sub Tbl, to_con.tbl)
 #endif
