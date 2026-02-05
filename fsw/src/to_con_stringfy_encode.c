@@ -55,6 +55,11 @@
 #include "ci_lab_msgids.h"
 #endif
 
+#ifdef HAVE_HS_APP
+#include "hs_msgids.h"
+#include "hs_msgstruct.h"
+#endif
+
 
 
 
@@ -199,6 +204,11 @@ CFE_Status_t TO_CON_StringfyOutputMessage(const CFE_SB_Buffer_t *SourceBuffer, c
                           (unsigned int)ExpectedLength);
             }
             break;
+#endif
+#ifdef HAVE_HS_APP
+        case HS_HK_TLM_MID:
+            strncpy ( MessageName, "HS_HK", MAX_TO_MSG_NAME_BYTES);
+        break;
 #endif
         default:
             strncpy ( MessageName, "unknown", MAX_TO_MSG_NAME_BYTES );

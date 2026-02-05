@@ -47,7 +47,7 @@
 #include "sample_app_msgids.h"
 #endif
 
-#ifdef HAVE_HS
+#ifdef HAVE_HS_APP
 #include "hs_msgids.h"
 #endif
 
@@ -92,14 +92,14 @@ TO_CON_Subs_t TO_CON_Subs = {.Subs = {/* CFS App Subscriptions */
                                       {CFE_SB_MSGID_WRAP_VALUE(HUFF_APP_HK_TLM_MID),    {0, 0}, 4},
                                       {CFE_SB_MSGID_WRAP_VALUE(HUFF_APP_RES_TLM_MID),   {0, 0}, 4},
 #endif
+#ifdef HAVE_HS_APP
+                                      {CFE_SB_MSGID_WRAP_VALUE(HS_HK_TLM_MID), {0, 0}, 4},
+#endif
 #ifdef HAVE_CI_LAB
                                       {CFE_SB_MSGID_WRAP_VALUE(CI_LAB_HK_TLM_MID),     {0, 0}, 4},
 #endif
 #ifdef HAVE_SAMPLE_APP
                                       {CFE_SB_MSGID_WRAP_VALUE(SAMPLE_APP_HK_TLM_MID), {0, 0}, 4},
-#endif
-#ifdef HAVE_HS
-                                      {CFE_SB_MSGID_WRAP_VALUE(HS_HK_TLM_MID), {0, 0}, 4},
 #endif
 #ifdef HAVE_FM
                                       {CFE_SB_MSGID_WRAP_VALUE(FM_HK_TLM_MID), {0, 0}, 4},

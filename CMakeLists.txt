@@ -7,7 +7,7 @@ set(TO_TABLE_COMPILE_DEFS)
 # it is easiest to add them as directory properties so they won't
 # be considered include directories for TO_CON itself.  Each one
 # gets a macro for conditional inclusion in the subscription table.
-foreach(EXT_APP mxm_app huff_app ci_lab sample_app hs fm ds sc lc)
+foreach(EXT_APP mxm_app huff_app ci_lab sample_app hs_app fm ds sc lc)
   list (FIND TGTSYS_${SYSVAR}_APPS ${EXT_APP} HAVE_APP)
   if (HAVE_APP GREATER_EQUAL 0)
     include_directories($<TARGET_PROPERTY:${EXT_APP},INTERFACE_INCLUDE_DIRECTORIES>)
